@@ -73,10 +73,26 @@ export default {
     // 提交登录表单
     submitLogin () {
       // el-form 实例
-      this.$refs.myForm.validate(function (isOk) {
+      this.$refs.myForm.validate((isOk) => {
         if (isOk) {
           // 认为前端效验登录成功
-          console.log('前端校验成功,发送用户名和密码到后台去校验')
+          // 地址参数  查询参数 params 对象
+          // body参数 data对象
+          this.$axios({
+            url: '/authorizations', // 请求地址
+            method: 'post', // 请求方法
+            data: this.loginForm
+          }).then(result => {
+            window.localStorage.setItem('user-token', result.data.data.token) // 前端缓存令牌
+            this.$router.push('/home') // 这个this指向组件实例 ，跳转到主页
+            // 成功以后才会进入到then,
+          }).catch(() => {
+            // elementUI的方法
+            this.$message({
+              message: '您的手机号或者验证码不正确',
+              type: 'warning'
+            })
+          })
         }
       })
     }
