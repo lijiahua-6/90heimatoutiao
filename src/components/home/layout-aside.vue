@@ -4,7 +4,7 @@
         <img src="../../assets/img/logo_admin.png" alt="">
     </div>
     <!-- 左侧导航 -->
-<el-menu background-color="#353b4e" text-color="#adafb5" active-text-color="#ffd04b">
+<el-menu style="width:231px" background-color="#353b4e" text-color="#adafb5" active-text-color="#ffd04b">
     <!-- 导航组件 -->
 <el-menu-item>
 首页
