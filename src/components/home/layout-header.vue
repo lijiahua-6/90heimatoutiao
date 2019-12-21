@@ -11,10 +11,10 @@
     <!-- 右侧 -->
     <el-col class="right" :span="4">
         <el-row type="flex" justify="end" align="middle">
-            <img src="../../assets/img/tim.jpg" alt="">
+            <img :src="userInfo.photo ? userInfo.photo : defaultImg" alt="">
             <!-- 下拉菜单 -->
-        <el-dropdown>
-            <span>黑马</span>
+        <el-dropdown @command="handle">
+            <span>{{userInfo.name}}</span>
             <el-dropdown-menu slot="dropdown">
                 <!-- 下拉内容 -->
                 <el-dropdown-item command="info">个人信息</el-dropdown-item>
@@ -29,7 +29,38 @@
 
 <script>
 export default {
-
+  // 查询的数据给响应式数据，数据在data中定义，里面是一个函数，
+  data () {
+    return {
+      userInfo: {}, // 用户信息
+      defaultImg: require('../../assets/img/avatar.jpg') // 先把地址转换成变量
+    }
+  },
+  created () {
+    // 查询数据
+    let token = window.localStorage.getItem('user-token') // 获取令牌
+    this.$axios({
+      url: '/user/profile',
+      //   headers参数
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(result => {
+      this.userInfo = result.data.data // 获取用户个人信息
+    })
+  },
+  methods: {
+    handle (commad) {
+      // 区分点击的菜单项
+      if (commad === 'lgout') {
+        //   退出
+        window.localStorage.removeItem('user-token') // 删除用户的令牌
+        this.$router.push('/login')
+      } else if (commad === 'git') {
+        window.location.href = 'https://github.com/shuiruohanyu/89heimatoutiao'
+      }
+    }
+  }
 }
 </script>
 
