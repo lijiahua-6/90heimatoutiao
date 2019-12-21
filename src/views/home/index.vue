@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import layoutAside from '../../components/home/layout-aside' // 引入组件
-import layoutHeader from '../../components/home/layout-header' // 引入组件
+// import layoutAside from '../../components/home/layout-aside' // 引入组件
+// import layoutHeader from '../../components/home/layout-header' // 引入组件
 export default {
   // 局部注册
   components: {
-    'layout-aside': layoutAside,
-    'layout-header': layoutHeader
+    // 'layout-aside': layoutAside,
+    // 'layout-header': layoutHeader
   }
 }
 </script>
