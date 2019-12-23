@@ -5,7 +5,7 @@ import router from './router'
 import './styles/index.less' // 引入初始化样式
 import 'element-ui/lib/theme-chalk/index.css' // 引入element样式
 import ElementUI from 'element-ui' // 引入UI包
-import axios from 'axios' // 引入axios 配置baseUrl
+import axios from './utils/request' // 引入自己封装的一个axios
 import Component from './components' // 引入组件对象
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0' // 赋值黑马头条的默认地址
 Vue.prototype.$axios = axios // 赋值给全局对象

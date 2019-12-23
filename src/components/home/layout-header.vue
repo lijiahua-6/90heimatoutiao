@@ -38,15 +38,10 @@ export default {
   },
   created () {
     // 查询数据
-    let token = window.localStorage.getItem('user-token') // 获取令牌
     this.$axios({
-      url: '/user/profile',
-      //   headers参数
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+      url: '/user/profile'
     }).then(result => {
-      this.userInfo = result.data.data // 获取用户个人信息
+      this.userInfo = result.data // 获取用户个人信息
     })
   },
   methods: {
