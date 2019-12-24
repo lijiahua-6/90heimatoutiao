@@ -3,9 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/home'
 import Login from '../views/login'
 import Home2 from '../views/home/home' // 默认背景图
-
 Vue.use(VueRouter)
-
 const routes = [
   { // 强制跳转
     path: '/',
@@ -25,6 +23,9 @@ const routes = [
     }, {
       path: 'material', // 素材列表
       component: () => import('../views/material') // 按需加载
+    }, {
+      path: 'articles',
+      component: () => import('../views/articles') // 按需加载
     }]
   }, { // 登录页
     path: '/login',
