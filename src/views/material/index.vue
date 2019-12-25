@@ -19,8 +19,7 @@
             <img :src="item.url" alt />
             <el-row class="operate" type="flex" align="middle" justify="space-around">
               <!-- v-bind:style 根据收藏状态决定 显示图标的颜色-->
-              <i @click="collectOrcancel(item)" :style="{color: item.is_collected ? 'red' : ''}" class="el-icon-star-on"></i>
-              <!-- 删除事件 -->
+              <i @click="collectOrCancel(item)" :style="{color: item.is_collected ? 'red' : ''}" class="el-icon-star-on"></i>
               <i @click="delMaterial(item.id)" class="el-icon-delete-solid"></i>
             </el-row>
           </el-card>
@@ -76,7 +75,7 @@ export default {
   methods: {
     // 定义一个删除方法
     delMaterial (id) {
-      this.$confirm('你确定删除吗').then(() => {
+      this.$confirm('您确定要删除该素材吗').then(() => {
         // 只有点击了确定 才会执行
         // 调用删除接口
         this.$axios({
@@ -86,6 +85,20 @@ export default {
           // 重新拉取
           this.getAllMaterial() // 重新加载数据
         })
+      })
+    },
+    // 收藏或者取消收藏
+    collectOrCancel (row) {
+      // 调用 收藏或者取消收藏接口
+      this.$axios({
+        url: `/user/images/${row.id}`,
+        method: 'put',
+        data: {
+          collect: !row.is_collected // 状态取反 收藏 => 取消 取消 => 收藏
+        }
+      }).then(() => {
+        // 成功一定进入到then
+        this.getAllMaterial() // 重新加载数据
       })
     },
     //   上传图片
@@ -101,20 +114,6 @@ export default {
         //   说明已经上传成功了一张图片
         this.loading = false // 关闭进度条
         this.getAllMaterial()
-      })
-    },
-    // 收藏或者取消收藏
-    collectOrcancel (row) {
-      // 调用 收藏或者取消收藏接口
-      this.$axios({
-        url: `/user/images/${row.id}`,
-        method: 'put',
-        data: {
-          collect: !row.is_collected // 状态取反 收藏 => 取消 取消 => 收藏
-        }
-      }).then(() => {
-        // 成功一定进入到then
-        this.getAllMaterial() // 重新加载数据
       })
     },
     //   切换分页
@@ -170,7 +169,7 @@ export default {
       left: 0;
       background-color: #f4f5f6;
       height: 30px;
-      i{
+      i {
         cursor: pointer;
       }
     }

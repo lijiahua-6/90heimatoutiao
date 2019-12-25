@@ -1,6 +1,6 @@
 <template>
   <!-- 二级组件的默认组件 -->
-  <div class="home">
+  <div class='home'>
 
   </div>
 </template>
@@ -12,10 +12,9 @@ export default {
 </script>
 
 <style lang='less' scoped>
-.home {
-    background-image: url('../../assets/img/peng.jpg');
-    height: 100vh;
-    background-size:cover;
-
-}
+  .home {
+      background-image: url('../../assets/img/peng.jpg');
+      height: 100vh;
+      background-size: cover;
+  }
 </style>

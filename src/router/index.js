@@ -2,14 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/home'
 import Login from '../views/login'
-import Home2 from '../views/home/home' // 默认背景图
+import Home2 from '../views/home/home' // 默认背景
 Vue.use(VueRouter)
 const routes = [
-  { // 强制跳转
+  {
+    // 强制跳转
     path: '/',
     redirect: '/home'
   },
-  { // 主页
+  {
+    // 主页
     path: '/home',
     name: 'home',
     component: Home,
@@ -26,8 +28,12 @@ const routes = [
     }, {
       path: 'articles',
       component: () => import('../views/articles') // 按需加载
+    }, {
+      path: 'publish',
+      component: () => import('../views/publish') // 按需加载
     }]
-  }, { // 登录页
+  }, {
+    // 登录页
     path: '/login',
     component: Login
   }
@@ -44,5 +50,4 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-
 export default router

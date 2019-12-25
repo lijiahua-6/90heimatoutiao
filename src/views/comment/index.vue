@@ -1,5 +1,5 @@
 <template>
-    <!-- 卡片组件 -->
+  <!-- 卡片组件 -->
   <el-card v-loading="loading">
     <!-- 面包屑给了卡片的具名插槽 -->
     <bread-crumb slot="header">
@@ -121,5 +121,4 @@ export default {
 </script>
 
 <style>
-
 </style>
