@@ -2,7 +2,7 @@
   <!-- 头部组件 -->
   <el-row class='layout-header' type="flex" align="middle" justify="space-between">
       <!-- 左侧 -->
-      <el-col class='left' :span="6">
+      <el-col class='left' :span="8">
           <!-- 左侧图标 -->
           <i class='el-icon-s-unfold'></i>
           <span class='title'>江苏传智播客教育科技股份有限公司</span>
@@ -64,7 +64,7 @@ export default {
   .layout-header {
       height:60px;
       .left {
-          font-size: 18px;
+          font-size: 16px;
           .title {
               margin-left:4px;
               color: #2c3e50;
