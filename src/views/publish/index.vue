@@ -131,10 +131,21 @@ export default {
           // }
         }
       })
+    },
+    // 获取文章详情通过id
+    getArticleById (articleId) {
+      this.$axios({
+        url: `/articles/${articleId}`
+      }).then(result => {
+        this.formData = result.data // 将指定文章数据给data数据
+      })
     }
   },
   created () {
     this.getChannels() // 获取频道数据
+    // 获取id 判断有无id  有id 就是修改 没id就是发布
+    let { articleId } = this.$route.params // 回去动态路由参数 articleId已经是字符串
+    articleId && this.getArticleById(articleId) // 获取文章数据
   }
 }
 </script>
