@@ -79,6 +79,10 @@ export default {
     }
   },
   methods: {
+    receiveImg (img, index) {
+      debugger
+      this.formData.cover.images = this.formData.cover.images.map((item, i) => i === index ? img : item)
+    },
     // 切换类型时触发  该方法 只有点击切换时才会触发
     changeType () {
       if (this.formData.cover.type === 0 || this.formData.cover.type === -1) {
